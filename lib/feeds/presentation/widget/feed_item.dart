@@ -22,8 +22,7 @@ class FeedItem extends StatelessWidget {
               SizedBox(
                   height: 30.w,
                   width: 30.w,
-                  child: CircularProgressIndicator(
-                      value: downloadProgress.progress)),
+                  child: CircularProgressIndicator()),
           errorWidget: (context, url, error) => const Icon(Icons.error),
           height: 100.w,
           width: 100.w,
