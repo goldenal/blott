@@ -87,7 +87,7 @@ class _WebLoaderActivity extends State<NewWebLoader> {
       ),
       body: Stack(
         children: [
-          WebViewWidget(controller: controller),
+      WebViewWidget(controller: controller),
           // if (loading)
           // const Center(
           //   child: CircularProgressIndicator(
