@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "464699515351",
+    "project_id": "blott-9ab19",
+    "storage_bucket": "blott-9ab19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464699515351:android:14539813e90ea3bef76b92",
+        "android_client_info": {
+          "package_name": "com.example.blott_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMFE0LPVBveFu97DqBJKNhHl-7sBXC7l0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
