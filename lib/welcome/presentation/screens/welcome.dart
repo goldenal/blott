@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:blott_app/feeds/presentation/screens/feeds.dart';
+import 'package:blott_app/util/storage.dart';
 import 'package:blott_app/welcome/presentation/screens/enter_name.dart';
 import 'package:flutter/material.dart';
 
@@ -18,9 +20,14 @@ class _WelcomeState extends State<Welcome> {
     // Timer to delay for 3 seconds before navigating to HomeScreen
     Timer(const Duration(seconds: 2), () {
       // Navigate to HomeScreen after 3 seconds
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) => const EnterName()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (_) =>
+              fetchOnboardedStatus() ? const Feeds() : const EnterName()));
     });
+  }
+
+  bool fetchOnboardedStatus() {
+    return Storage.prefs.getBool("onboarded") ?? false;
   }
 
   @override

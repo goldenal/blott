@@ -50,12 +50,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: fetchOnboardedStatus() ? const Feeds() : const Welcome()
+        home:  const Welcome()
         // Welcome(),
         );
   }
 
-  bool fetchOnboardedStatus() {
-    return Storage.prefs.getBool("onboarded") ?? false;
-  }
 }

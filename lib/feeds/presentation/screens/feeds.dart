@@ -33,6 +33,7 @@ class _FeedsState extends ConsumerState<Feeds> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
               SizedBox(
@@ -49,11 +50,30 @@ class _FeedsState extends ConsumerState<Feeds> {
                 height: 22.h,
               ),
               model.isloading
-                  ? const Center(
-                      child: const Text(
-                      "Fetching news list ......",
-                      style: TextStyle(color: Colors.white),
-                    ))
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 200.h,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Fetching news list ......",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            SizedBox(
+                              height: 20.w,
+                              width: 20.w,
+                              child: CircularProgressIndicator())
+                          ],
+                        ),
+                      ],
+                    )
                   : Expanded(
                       child: ListView.builder(
                           primary: false,

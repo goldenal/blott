@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:webview_flutter_android/webview_flutter_android.dart';
-import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
+// import 'package:webview_flutter_android/webview_flutter_android.dart';
+// import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 class NewWebLoader extends StatefulWidget {
   String title;
@@ -15,6 +15,7 @@ class NewWebLoader extends StatefulWidget {
 
 class _WebLoaderActivity extends State<NewWebLoader> {
   @override
+  bool loading = false;
   void initState() {
     super.initState();
   }
@@ -22,15 +23,16 @@ class _WebLoaderActivity extends State<NewWebLoader> {
   @override
   Widget build(BuildContext context) {
     String? altUrl = '${ModalRoute.of(context)!.settings.arguments}';
-    late final PlatformWebViewControllerCreationParams params;
-    if (WebViewPlatform.instance is WebKitWebViewPlatform) {
-      params = WebKitWebViewControllerCreationParams(
-        allowsInlineMediaPlayback: true,
-        mediaTypesRequiringUserAction: const <PlaybackMediaTypes>{},
-      );
-    } else {
-      params = const PlatformWebViewControllerCreationParams();
-    }
+    final PlatformWebViewControllerCreationParams params =
+        const PlatformWebViewControllerCreationParams();
+    // if (WebViewPlatform.instance is WebKitWebViewPlatform) {
+    //   params = WebKitWebViewControllerCreationParams(
+    //     allowsInlineMediaPlayback: true,
+    //     mediaTypesRequiringUserAction: const <PlaybackMediaTypes>{},
+    //   );
+    // } else {
+    //   params = const PlatformWebViewControllerCreationParams();
+    // }
 
     final WebViewController controller =
         WebViewController.fromPlatformCreationParams(params)
@@ -42,13 +44,16 @@ class _WebLoaderActivity extends State<NewWebLoader> {
                 // Update loading bar.
               },
               onPageStarted: (String url) async {
-                CircularProgressIndicator();
+                // loading = true;
+                // setState(() {});
               },
               onPageFinished: (String url) {
-                CircularProgressIndicator();
+                // loading = false;
+                // setState(() {});
               },
               onWebResourceError: (WebResourceError error) {
-                CircularProgressIndicator();
+                // loading = false;
+                // setState(() {});
               },
               onNavigationRequest: (NavigationRequest nav) {
                 return NavigationDecision.navigate;
@@ -57,11 +62,11 @@ class _WebLoaderActivity extends State<NewWebLoader> {
           )
           ..loadRequest(Uri.parse(widget.url ?? altUrl));
 
-    if (controller.platform is AndroidWebViewController) {
-      AndroidWebViewController.enableDebugging(true);
-      (controller.platform as AndroidWebViewController)
-          .setMediaPlaybackRequiresUserGesture(false);
-    }
+    // if (controller.platform is AndroidWebViewController) {
+    //   AndroidWebViewController.enableDebugging(true);
+    //   (controller.platform as AndroidWebViewController)
+    //       .setMediaPlaybackRequiresUserGesture(false);
+    // }
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -74,13 +79,23 @@ class _WebLoaderActivity extends State<NewWebLoader> {
             color: Colors.black,
           ),
         ),
-        iconTheme: IconThemeData(color: Colors.purple),
-        title: Text(
+        iconTheme: const IconThemeData(color: Colors.purple),
+        title: const Text(
           "NEWS",
         ),
         elevation: 0.0,
       ),
-      body: WebViewWidget(controller: controller),
+      body: Stack(
+        children: [
+          WebViewWidget(controller: controller),
+          // if (loading)
+          // const Center(
+          //   child: CircularProgressIndicator(
+          //     color: Colors.purple,
+          //   ),
+          //),
+        ],
+      ),
     );
   }
 }
