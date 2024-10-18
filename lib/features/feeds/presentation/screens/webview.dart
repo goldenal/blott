@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 // import 'package:webview_flutter_android/webview_flutter_android.dart';
@@ -42,16 +43,20 @@ class _WebLoaderActivity extends State<NewWebLoader> {
             NavigationDelegate(
               onProgress: (int progress) {
                 // Update loading bar.
+              
               },
               onPageStarted: (String url) async {
+                EasyLoading.show(status: 'loading...');
                 // loading = true;
                 // setState(() {});
               },
               onPageFinished: (String url) {
+                EasyLoading.dismiss();
                 // loading = false;
                 // setState(() {});
               },
               onWebResourceError: (WebResourceError error) {
+                EasyLoading.dismiss();
                 // loading = false;
                 // setState(() {});
               },
@@ -87,7 +92,7 @@ class _WebLoaderActivity extends State<NewWebLoader> {
       ),
       body: Stack(
         children: [
-      WebViewWidget(controller: controller),
+          WebViewWidget(controller: controller),
           // if (loading)
           // const Center(
           //   child: CircularProgressIndicator(

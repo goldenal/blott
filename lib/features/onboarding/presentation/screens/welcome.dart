@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:blott_app/feeds/presentation/screens/feeds.dart';
+import 'package:blott_app/features/feeds/presentation/screens/feeds.dart';
 import 'package:blott_app/util/storage.dart';
-import 'package:blott_app/welcome/presentation/screens/enter_name.dart';
+import 'package:blott_app/features/onboarding/presentation/screens/enter_name.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatefulWidget {

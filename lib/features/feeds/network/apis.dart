@@ -1,4 +1,4 @@
-import 'package:blott_app/feeds/domain/data_model.dart';
+import 'package:blott_app/features/feeds/domain/data_model.dart';
 import 'package:blott_app/util/dioSetup.dart';
 import 'package:dio/dio.dart';
 

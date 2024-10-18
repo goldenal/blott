@@ -1,7 +1,8 @@
-import 'package:blott_app/feeds/application/feeds_provider.dart';
-import 'package:blott_app/feeds/domain/data_model.dart';
-import 'package:blott_app/feeds/presentation/screens/webview.dart';
-import 'package:blott_app/feeds/presentation/widget/feed_item.dart';
+import 'package:blott_app/features/feeds/application/feeds_provider.dart';
+import 'package:blott_app/features/feeds/domain/data_model.dart';
+import 'package:blott_app/features/feeds/presentation/screens/webview.dart';
+import 'package:blott_app/features/feeds/presentation/widget/feed_item.dart';
+import 'package:blott_app/features/feeds/presentation/widget/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,30 +51,7 @@ class _FeedsState extends ConsumerState<Feeds> {
                 height: 22.h,
               ),
               model.isloading
-                  ? Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 200.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Fetching news list ......",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            SizedBox(
-                              height: 20.w,
-                              width: 20.w,
-                              child: CircularProgressIndicator())
-                          ],
-                        ),
-                      ],
-                    )
+                  ? FeedsShimmer()
                   : Expanded(
                       child: ListView.builder(
                           primary: false,

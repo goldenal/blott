@@ -1,4 +1,4 @@
-import 'package:blott_app/feeds/presentation/screens/feeds.dart';
+import 'package:blott_app/features/feeds/presentation/screens/feeds.dart';
 import 'package:blott_app/util/storage.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';

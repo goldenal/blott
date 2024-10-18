@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:blott_app/feeds/domain/data_model.dart';
-import 'package:blott_app/feeds/network/apis.dart';
+import 'package:blott_app/features/feeds/domain/data_model.dart';
+import 'package:blott_app/features/feeds/network/apis.dart';
 import 'package:blott_app/util/errorPage.dart';
 import 'package:blott_app/util/storage.dart';
 import 'package:dio/dio.dart';
