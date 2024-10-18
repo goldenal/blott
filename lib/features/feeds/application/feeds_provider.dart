@@ -37,14 +37,12 @@ class FeedsProvider extends ChangeNotifier {
     }
   }
 
-  convertTime(int time){
-      // Convert time since epoch to DateTime object
-  final dateTime = DateTime.fromMillisecondsSinceEpoch(time * 1000);
+  convertTime(int time) {
+    // Convert time since epoch to DateTime object
+    final dateTime = DateTime.fromMillisecondsSinceEpoch(time * 1000);
 
-  // Format the DateTime object as "12 June 2021"
-return  DateFormat('d MMMM yyyy').format(dateTime);
-
-  
+    // Format the DateTime object as "12 June 2021"
+    return DateFormat('d MMMM yyyy').format(dateTime);
   }
 
   String handleError(message) {

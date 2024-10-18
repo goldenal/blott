@@ -43,7 +43,7 @@ class _WebLoaderActivity extends State<NewWebLoader> {
             NavigationDelegate(
               onProgress: (int progress) {
                 // Update loading bar.
-              
+                //EasyLoading.show(status: 'loading...');
               },
               onPageStarted: (String url) async {
                 EasyLoading.show(status: 'loading...');

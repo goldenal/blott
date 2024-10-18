@@ -53,28 +53,29 @@ class _FeedsState extends ConsumerState<Feeds> {
               model.isloading
                   ? FeedsShimmer()
                   : Expanded(
-                      child: ListView.builder(
-                          primary: false,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            FeedsData dt = model.data[index];
-                            return GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              NewWebLoader("News", dt.url)));
-                                },
-                                child: FeedItem(
-                                  body: dt.summary ?? "",
-                                  pic: dt.image ?? "",
-                                  title: dt.source ?? "",
-                                  time: model.convertTime(dt.datetime ?? 0),
-                                ));
-                          },
-                          itemCount: model.data.length),
-                    ),
+                        child: ListView.builder(
+                            primary: false,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              FeedsData dt = model.data[index];
+                              return GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                NewWebLoader("News", dt.url)));
+                                  },
+                                  child: FeedItem(
+                                    body: dt.summary ?? "",
+                                    pic: dt.image ?? "",
+                                    title: dt.source ?? "",
+                                    time: model.convertTime(dt.datetime ?? 0),
+                                  ));
+                            },
+                            itemCount: model.data.length),
+                      ),
+                    
             ],
           ),
         ),
